@@ -18,6 +18,7 @@ class TypewriterWindow: NSWindow {
     let bgSaturation: CGFloat = 1.0
     let bgAlpha: CGFloat = 1.0
     let bgMaxHue: CGFloat = 360
+    let hueStep: CGFloat = 3
 
     override var canBecomeKey: Bool { get {  return true } }
 
@@ -34,8 +35,8 @@ class TypewriterWindow: NSWindow {
         keyLabel.stringValue = event.characters!
         updateBackground()
         soundController.play()
-        counter += 3
-        if (counter > 360) {
+        counter += hueStep
+        if (counter > bgMaxHue) {
             counter = 0
         }
     }
